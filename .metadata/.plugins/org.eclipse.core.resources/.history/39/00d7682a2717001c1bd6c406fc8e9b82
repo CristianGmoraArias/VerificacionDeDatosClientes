@@ -1,0 +1,37 @@
+package com.cmc.rest.servicios;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.cmc.rest.commons.ValidationException;
+import com.cmc.rest.entidades.Persona;
+
+public class ServicioPersonas {
+
+	public static Persona actualizar(Persona persona) throws ValidationException {
+		Logger logger = LogManager.getLogger(ServicioPersonas.class); 
+		Persona p=new Persona();
+		if (persona != null) {
+			 p = new Persona(persona.getCedula(), persona.getNombre(), persona.getApellido(),persona.getEdad());
+			p.setNombre(p.getNombre().toUpperCase());
+			p.setApellido(p.getApellido().toUpperCase());
+			if(p.getNombre().length()<=3){
+				logger.error("El nombre es muy corto");
+				throw new ValidationException("El nombre es muy corto");
+			}
+			if(p.getApellido().length()<=3){
+				logger.error("El apellido es muy corto");
+				throw new ValidationException("El apellido es muy corto");
+			}
+		}
+		
+		return p;
+	}
+	public static Persona buscarPorCedula(String cedula){
+		
+		
+		
+		return null;
+	}
+
+}

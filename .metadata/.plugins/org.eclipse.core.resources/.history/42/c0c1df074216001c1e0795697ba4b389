@@ -1,0 +1,30 @@
+package com.cmc.rest.servicios;
+
+import com.cmc.rest.commons.ValidationException;
+import com.cmc.rest.entidades.Persona;;
+
+public class ServicioPersonas {
+
+	public static Persona actualizar(Persona persona) {
+		ValidationException p;
+		if (persona != null) {
+			Persona p = new Persona(persona.getCedula(), persona.getNombre(), persona.getApellido());
+			
+			try{
+			if (persona.getNombre().length() > 3) {	
+				p.setNombre(p.getNombre().toUpperCase());
+			}
+			}
+			if (persona.getApellido().length() > 3) {
+				p.setApellido(p.getApellido().toUpperCase());
+					
+			} else {
+				
+				return p;
+			}
+		}
+
+		return null;
+	}
+
+}

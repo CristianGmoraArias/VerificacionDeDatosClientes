@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
+<fullyQualifiedTypeName name="org.apache.logging.log4j.core.filter.LevelRangeFilter"/>
+<fullyQualifiedTypeName name="com.cmc.rest.servicios.ServicioPersonas"/>
+<fullyQualifiedTypeName name="com.cmc.rest.commons.ValidationException"/>
+<fullyQualifiedTypeName name="com.cmc.rest.commons.ArchivoException"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.cmc.rest.servicios.ManejadorArchivos"/>
+<fullyQualifiedTypeName name="com.cmc.rest.entidades.Consulta"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="com.cmc.rest.commons.DateUtil"/>
+<fullyQualifiedTypeName name="java.io.FileWriter"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+</qualifiedTypeNameHistroy>

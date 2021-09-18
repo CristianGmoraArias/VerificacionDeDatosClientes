@@ -1,0 +1,87 @@
+package com.cmc.rest.servicios;
+
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.cmc.rest.commons.ArchivoException;
+import com.cmc.rest.commons.ValidationException;
+import com.cmc.rest.entidades.Persona;
+
+public class ServicioPersonas {
+	static Logger logger = LogManager.getLogger(ServicioPersonas.class);
+
+	public static Persona actualizar(Persona persona) throws ValidationException {
+
+		Persona p = new Persona();
+		if (persona != null) {
+			p = new Persona(persona.getCedula(), persona.getNombre(), persona.getApellido());
+			p.setNombre(p.getNombre().toUpperCase());
+			p.setApellido(p.getApellido().toUpperCase());
+			if (p.getNombre().length() <= 3) {
+				logger.error("El nombre es muy corto");
+				throw new ValidationException("El nombre es muy corto");
+			}
+			if (p.getApellido().length() <= 3) {
+				logger.error("El apellido es muy corto");
+				throw new ValidationException("El apellido es muy corto");
+			}
+		}
+
+		return p;
+	}
+
+	public static Persona buscarPorCedula(String cedula) {
+		ManejadorArchivos manejadorArchivos = new ManejadorArchivos("miArchivo.txt");
+		ArrayList<Persona> personas = new ArrayList<Persona>();
+		try {
+			personas.addAll(manejadorArchivos.leer());
+			System.out.println(personas.toString());
+		} catch (ArchivoException e) {
+			e.printStackTrace();
+			logger.error("No se pudo leer el archivo");
+		}
+		for (Persona persona : personas) {
+			System.out.println("entra al for");
+			System.out.println(persona.getCedula());
+			System.out.println(cedula);
+			if (persona.getCedula().equals(cedula)) {
+				System.out.println("entra al if");
+				return persona;
+			}
+		}
+
+		return null;
+	}
+
+	public static void guardarPersona(Persona persona) {
+		FileWriter fichero = null;
+		PrintWriter pw = null;
+		try {
+			fichero = new FileWriter("E:\\apache-tomcat-9.0.52\\bin\\miarchivo.txt", true);
+			pw = new PrintWriter(fichero);
+
+			if (persona != null) {
+				String guardar = persona.getNombre() + "-" + persona.getApellido() + "-" + persona.getCedula() + "-"
+						+ persona.getEdad() + "-" + persona.getFechaNacimiento();
+
+				pw.println("\n" + guardar);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error("Error al escribir el archivo", e);
+		} finally {
+			try {
+				fichero.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+				logger.error("Error al cerrar el fichero", e2);
+			}
+		}
+	}
+
+}

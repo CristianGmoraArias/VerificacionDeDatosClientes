@@ -1,0 +1,30 @@
+package com.cmc.rest.servicios;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.cmc.rest.commons.ValidationException;
+import com.cmc.rest.entidades.Persona;;
+
+public class ServicioPersonas {
+	private static Logger logger = LogManager.getLogger(ServicioPersonas.class);
+
+	public static Persona actualizar(Persona persona) throws ValidationException  {
+
+		if (persona != null) {
+			Persona p = new Persona(persona.getCedula(), persona.getNombre(), persona.getApellido());
+			if (persona.getNombre().length() <= 3) {
+				logger.error("El nombre es muy corto");
+				throw new ValidationException("el nombre es muy corto");
+			}
+			if (persona.getApellido().length() <= 3) {
+				logger.error("El apellido es muy corto");
+				throw new ValidationException("el apellido es muy corto");
+			}
+			return p;
+		}
+		return null;
+	}
+
+	
+}

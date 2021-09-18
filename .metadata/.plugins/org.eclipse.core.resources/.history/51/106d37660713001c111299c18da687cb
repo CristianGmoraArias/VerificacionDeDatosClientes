@@ -1,0 +1,7 @@
+package com.cmc.clientes;
+
+public class PersonaRest {
+public Persona modificar(Persona persona ){
+	
+}
+}

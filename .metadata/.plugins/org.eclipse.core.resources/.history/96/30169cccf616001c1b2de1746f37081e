@@ -1,0 +1,18 @@
+package com.cmc.rest.servicios;
+
+import com.cmc.rest.entidades.Persona;
+
+public class ServicioPersonas {
+
+	public static Persona actualizar(Persona persona) {
+		if (persona != null) {
+			Persona p = new Persona(persona.getCedula(), persona.getNombre(), persona.getApellido());
+			p.setNombre(p.getNombre().toUpperCase());
+			p.setApellido(p.getApellido().toUpperCase());
+			return p;
+		}
+		
+		return null;
+	}
+
+}

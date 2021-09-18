@@ -1,0 +1,25 @@
+package com.cmc.rest.commons;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateUtil {
+	public static String convertir(Date date){
+		SimpleDateFormat formato=new SimpleDateFormat("yyyy/dd/MM hh: mm: ss");
+		String fechaCreacion=formato.format(date);
+		return fechaCreacion;
+	}
+	public static Date convertirDate(String dato) throws ParseException  {
+		SimpleDateFormat SDFormat = new SimpleDateFormat("dddd/MM/yyyy");
+		Date fechaNacimiento = new Date();
+		fechaNacimiento = SDFormat.parse(dato);
+		return fechaNacimiento;
+	}
+	public static String convertirDate2(Date date) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		String fechaComoCadena = sdf.format(date);
+		return fechaComoCadena;
+	}
+
+}
